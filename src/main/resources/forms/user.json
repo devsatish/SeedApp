@@ -1,0 +1,52 @@
+{
+    "profile": {
+    	"firstName": {
+            "gloss": "First Name",
+            "type": "text",
+            "required": true,
+            "validations": {
+            	"minlength": "2",
+            	"maxlength": "32"
+            }
+        },
+        "lastName": {
+            "gloss": "Last Name",
+            "type": "text",
+            "required": true,
+            "validations": {
+            	"minlength": "2",
+            	"maxlength": "32"
+            }
+        },
+        "email": {
+            "gloss": "Email",
+            "type": "email",
+            "required": true,
+            "validations": {
+            	"email": "true"
+            }
+        },
+        "address": {
+            "gloss": "Address",
+            "type": "text",
+            "required": false,
+            "validations": {
+            	"maxlength": "64"
+            }
+        },
+        "phoneNumber": {
+            "gloss": "Phone Number",
+            "type": "phone",
+            "required": false,
+            "validations": {}
+        }
+    },
+    "settings": {
+    	"publicProfile": {
+    		"gloss": "Profile Public",
+    		"type": "text",
+            "required": true,
+            "validations": {}
+    	}
+    }
+}

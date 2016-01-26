@@ -1,0 +1,34 @@
+<md-toolbar>
+	<div class="md-toolbar-tools">
+       	<h2>Adding to {{title}}</h2>
+       	<span flex></span>
+       	<md-button class="md-icon-button" ng-click="cancel()" aria-label="Cancel">
+			<ng-md-icon icon="close"></ng-md-icon>
+       	</md-button>
+	</div>
+</md-toolbar>
+
+<md-content layout-padding>
+	<md-tabs md-dynamic-height md-border-bottom md-swipe-content md-selected="selected">
+		<md-tab ng-if="isAdmin() && context != 'collection'" label="Community" ng-click="select('community')">
+			<md-card>				
+				<asc-form model="community" action="create" context="community[index]" cancel="cancel"></asc-form>
+			</md-card>
+	 	</md-tab>
+	 	<md-tab ng-if="context == 'community'" label="Collection" ng-click="select('collection')">
+			<md-card>
+				<asc-form model="collection" action="create" context="community[index]" cancel="cancel"></asc-form>	
+			</md-card>
+	 	</md-tab>
+	 	<md-tab ng-if="context == 'collection'" label="Item" ng-click="select('item')">
+			<md-card>
+				<asc-form model="item" action="create" cancel="cancel"></asc-form>	
+			</md-card>
+	 	</md-tab>
+	 	<md-tab label="Group" ng-click="select('group')">
+			<md-card>
+				<asc-form model="group" action="create" cancel="cancel"></asc-form>	
+			</md-card>
+	 	</md-tab>
+	</md-tabs>
+</md-content>

@@ -1,0 +1,30 @@
+{   
+    "self": {
+    	"name": {
+    		"gloss": "Group Name",
+    		"type": "text",
+            "required": true,
+            "validations": {
+            	"minlength": "4",
+            	"maxlength": "64"
+            }
+    	},
+    	"type": {
+    		"gloss": "Group Type",
+    		"type": "select",
+    		"select": [
+    			"ACCESS",
+    			"CURATOR",
+    			"ADMINISTRATIVE"
+    		],
+    		"required": true,
+            "validations": {}
+    	},
+    	"exclusive": {
+    		"gloss": "Exclusive",
+    		"type": "boolean",
+    		"required": true,
+    		"validations": {}
+    	}
+    }
+}

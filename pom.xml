@@ -1,0 +1,280 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.project</groupId>
+	<artifactId>ascension</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Ascension</name>
+	<description>Web Application</description>
+
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.1.RELEASE</version>
+	</parent>
+	
+	<properties>
+		<java.version>1.8</java.version>
+		<postgresql.version>9.4.1207.jre7</postgresql.version>
+	</properties>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+	
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+				
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        
+        <dependency> 
+ 			<groupId>org.springframework.security</groupId> 
+ 			<artifactId>spring-security-jwt</artifactId>
+ 		</dependency>
+        
+        <dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.0.8.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.6.4</version>
+		</dependency>
+		
+ 		<dependency>
+	       <groupId>org.springframework.data</groupId>
+	       <artifactId>spring-data-solr</artifactId>
+	       <version>1.5.2.RELEASE</version>
+	   </dependency>
+ 		
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>  
+			<groupId>org.postgresql</groupId> 
+			<artifactId>postgresql</artifactId> 
+			<version>${postgresql.version}</version>  
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-cypher-compiler-1.9</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+			    	<addResources>false</addResources>
+			  	</configuration>
+			</plugin>
+		 	
+		 	<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-resources-plugin</artifactId>
+			    <configuration>
+			        <delimiters>
+			            <delimiter>@</delimiter>
+			        </delimiters>
+			    </configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<useSystemClassLoader>false</useSystemClassLoader>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+				
+					<execution>
+						<id>exec-npm-install</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>npm</executable>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					
+					<execution>
+						<id>exec-npm-run-protractor</id>
+						<phase>test</phase>
+						<configuration>
+							<skip>true</skip>
+							<executable>npm</executable>
+							<arguments>
+								<argument>run</argument>
+								<argument>protractor</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					
+					<execution>
+						<id>exec-compass-compile</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>compass</executable>
+							<arguments>
+								<argument>compile</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					
+					<!-- Grunt Deploy -->
+					<!-- 
+					<execution>
+						<id>exec-grunt-deploy</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>grunt</executable>
+							<arguments>
+								<argument>deploy</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution> -->
+					
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.kelveden</groupId>
+				<artifactId>maven-karma-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>maven-karma-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+						<configuration>
+							<karmaExecutable>${basedir}/node_modules/.bin/karma</karmaExecutable>
+							<configFile>${basedir}/karma.conf.js</configFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+		</plugins>
+		
+		<pluginManagement>
+			<plugins>			
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[1.3.2,)</versionRange>
+										<goals>
+											<goal>exec</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute/>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>				
+			</plugins>
+		</pluginManagement>
+		
+		<resources>
+			<resource>
+    			<directory>src/main/resources</directory>
+	    		<filtering>true</filtering>
+	  		</resource>
+	  		<resource>
+			  	<directory>node_modules</directory>
+			  	<excludes>
+			    	<exclude>/**</exclude>
+			  	</excludes>
+			</resource>
+	  	</resources>
+		
+	</build>
+	
+
+</project>

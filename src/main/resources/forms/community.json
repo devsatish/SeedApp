@@ -1,0 +1,24 @@
+{   
+    "self": {
+    	"name": {
+    		"gloss": "Community Name",
+    		"type": "text",
+            "required": true,
+            "validations": {
+            	"minlength": "4",
+            	"maxlength": "64"
+            }
+    	},
+    	"parentCommunity": {
+    		"gloss": "Parent Community",
+    		"type": "hidden",
+    		"entity": "Community",
+            "required": false,
+            "validations": {},
+            "facets": [
+            	"id",
+            	"name"
+            ]
+    	}
+    }
+}

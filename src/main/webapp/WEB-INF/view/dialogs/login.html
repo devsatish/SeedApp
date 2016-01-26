@@ -1,0 +1,46 @@
+<md-toolbar>
+	<div class="md-toolbar-tools">
+       	<h2>Login</h2>
+       	<span flex></span>
+       	<md-button class="md-icon-button" ng-click="cancel()" aria-label="Cancel">
+			<ng-md-icon icon="close"></ng-md-icon>
+       	</md-button>
+	</div>
+</md-toolbar>
+
+<md-content layout-padding>
+
+    <form name="login" novalidate ng-submit="authenticate(username, password)">
+
+		<md-input-container class="md-block">
+       		<label>Username</label>
+       		<input required ng-minlength="4" ng-maxlength="24" type="text" name="username" ng-model="username" md-autofocus>
+       		<div ng-messages="login.username.$error">
+       			<div ng-message="required">Username is required.</div>
+       			<div ng-message="minlength">Username must be at least 4 characters.</div>
+       			<div ng-message="maxlength">Username must be equal to or less than 24 characters.</div>
+       		</div>
+   		</md-input-container>
+
+   		<md-input-container class="md-block">
+       		<label>Password</label>
+       		<input required ng-minlength="6" ng-maxlength="32" type="password" name="password" ng-model="password">
+       		<div ng-messages="login.password.$error">
+       			<div ng-message="required">Password is required.</div>
+       			<div ng-message="minlength">Password must be at least 6 characters.</div>
+       			<div ng-message="maxlength">Password must be equal to or less than 32 characters.</div>
+       		</div>
+   		</md-input-container>
+   		
+		<md-input-container class="md-block">
+   			<div style="color: red" ng-messages="error">{{error}}</div>
+   		</md-input-container>
+
+		<md-input-container class="md-block">
+			<md-button type="submit" data-ng-disabled="login.$invalid" class="md-raised md-primary" aria-label="Login">Login</md-button>
+			<md-button class="md-raised md-warn" ng-click="cancel()" aria-label="Cencel">Cancel</md-button>
+		</md-input-container>
+
+	</form>
+
+</md-content>

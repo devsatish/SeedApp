@@ -1,0 +1,42 @@
+{   
+    "self": {
+    	"name": {
+    		"gloss": "Collection Name",
+    		"type": "text",
+            "required": true,
+            "validations": {
+            	"minlength": "4",
+            	"maxlength": "64"
+            }
+    	},
+    	"group": {
+    		"gloss": "Curators",
+    		"type": "select",
+    		"entity": "Group",
+            "required": true,
+            "validations": {},
+            "facets": [
+            	"name",
+            	"type"
+            ],
+            "filters": {	
+        		"type": {
+        		 	"package": "enumeration",
+        		 	"class": "GroupType",
+        			"value": "CURATOR"
+    			}
+    		}
+    	},
+    	"community": {
+    		"gloss": "Community",
+    		"type": "hidden",
+    		"entity": "Community",
+            "required": true,
+            "validations": {},
+            "facets": [
+            	"id",
+            	"name"
+            ]
+    	}
+    }
+}

@@ -1,0 +1,20 @@
+<md-tabs md-dynamic-height md-border-bottom md-swipe-content md-selected="selected">
+	<md-tab label="Profile" ng-click="select('profile')">
+		<div ng-include src="'view/user/profile.html'"></div>
+ 	</md-tab>
+ 	<md-tab label="Events" ng-click="select('events')"> 
+		<div ng-include src="'view/user/events.html'"></div>
+	</md-tab>
+	<md-tab label="Assets" ng-click="select('assets')"> 
+		<div ng-include src="'view/user/assets.html'"></div>
+	</md-tab>
+	<md-tab label="Exhibits" ng-click="select('exhibits')"> 
+		<div ng-include src="'view/user/exhibits.html'"></div>
+	</md-tab>
+	<md-tab label="Themes" ng-click="select('themes')"> 
+		<div ng-include src="'view/user/themes.html'"></div>
+	</md-tab> 
+	<md-tab label="Settings" ng-click="select('settings')"> 
+		<div ng-include src="'view/user/settings.html'"></div>
+	</md-tab> 
+</md-tabs> 
