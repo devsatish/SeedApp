@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,14 +25,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.Group;
+import com.project.model.DecodedToken;
 import com.project.model.User;
 import com.project.model.repo.GroupRepo;
 import com.project.model.repo.UserRepo;
 import com.project.service.CryptoService;
 import com.project.service.EmailService;
+import com.project.service.IndexService;
 
 @RestController
 @RequestMapping("/registration")
@@ -47,7 +51,10 @@ public class RegistrationController {
 	private GroupRepo groupRepo;
 	
 	@Autowired
-	private EmailService emailServicel;
+	private EmailService emailService;
+	
+	@Autowired
+	private IndexService indexService;
 	
 	@Autowired
 	private CryptoService cryptoService;
@@ -63,7 +70,7 @@ public class RegistrationController {
 		String email = data.get("email");
 		
 		Map<String, String> profile = new HashMap<String, String>();
-		profile.put("email", "Email");
+		profile.put("email", data.get("email"));
 		profile.put("firstName", data.get("firstName"));
 		profile.put("lastName", data.get("lastName"));
 		
@@ -90,7 +97,7 @@ public class RegistrationController {
 		String link = requestUrl.getProtocol() + "://" + requestUrl.getHost() + ":" + requestUrl.getPort() + request.getServletContext().getContextPath() + "/registration/" + token;
 		
 		try {
-			emailServicel.sendEmail(email, "Ascension Registration", "Please follow link to complete registration:\n\n" + link);
+			emailService.sendEmail(email, "Ascension Registration", "Please follow link to complete registration:\n\n" + link);
 		} catch (MessagingException e) {
 			throw new InternalAuthenticationServiceException("Could not send email to " + email + "!");
 		}
@@ -99,21 +106,17 @@ public class RegistrationController {
 	}
 	
 	@Transactional
-	@RequestMapping(value = "/{token}")
-	public ModelAndView confirm(HttpServletRequest request, @PathVariable String token) {
-		ModelAndView view = new ModelAndView("index");
-		view.addObject("version", version);
-		view.addObject("base", request.getServletContext().getContextPath());
-		
-		String[] content;
+	@RequestMapping(value = "/{encodedToken}")
+	public ResponseEntity<String> confirm(HttpServletRequest request, @PathVariable String encodedToken) {
+		DecodedToken token;
 		
 		try {
-			content = cryptoService.validateToken(token, TOKEN_TYPE);			
+			token = cryptoService.validateToken(encodedToken, TOKEN_TYPE);			
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
 			throw new InternalAuthenticationServiceException("Bad token!");
 		}
 		
-		String username = content[1];
+		String username = token.getContent();
 		
 		User user;
 		
@@ -130,7 +133,7 @@ public class RegistrationController {
 		everyone.addUser(user);
 		groupRepo.save(everyone);
 				
-		return view;
+		return new ResponseEntity<String>(indexService.getIndex(), new HttpHeaders(), HttpStatus.ACCEPTED);
 	}
 		
 }

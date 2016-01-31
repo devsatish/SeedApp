@@ -26,7 +26,6 @@ public class Html5ViewController {
 	
 	public Html5ViewController() {
 		headers = new HttpHeaders();
-		headers.add("base", "test");
 	}
 
 	@ExceptionHandler(value = { NoHandlerFoundException.class })	
