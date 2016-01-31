@@ -4,17 +4,21 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "angular": "latest",
-    "angular-loader": "latest",
-    "angular-route": "latest",
-    "angular-mocks": "latest",
-    "angular-material": "1.0.2",
-    "angular-messages": "latest",
-    "angular-material-icons": "latest",
-    "modernizr": "latest",
-    "html5-boilerplate": "latest",
-    "jquery": "latest",
-    "sockjs-client": "latest",
-    "stomp-websocket": "latest"
+    "angular": "*",
+    "angular-loader": "*",
+    "angular-route": "*",
+    "angular-mocks": "*",
+    "angular-material": "*",
+    "angular-messages": "*",
+    "angular-material-icons": "*",
+    "modernizr": "*",
+    "html5-boilerplate": "*",
+    "jquery": "*",
+    "sockjs-client": "*",
+    "stomp-websocket": "*"
+  },
+  "resolutions": {
+    "lodash": "*",
+    "fserver": "*"
   }
 }
