@@ -42,10 +42,14 @@ public class Community extends BaseEntity {
 	
 	@OneToMany(cascade = { DETACH, MERGE, REFRESH })
 	private List<Collection> collections;
+	
+	@Column(nullable = false)
+	private boolean isPublic;
 
 	public Community() {
 		communities = new ArrayList<Community>();
 		collections = new ArrayList<Collection>();
+		setPublic(true);
 	}
 	
 	public Community(String name, Group admins) {
@@ -122,5 +126,13 @@ public class Community extends BaseEntity {
 	public void clearCollections() {
 		collections.clear();
 	}
-	
+
+	public boolean isPublic() {
+		return isPublic;
+	}
+
+	public void setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+	}
+		
 }

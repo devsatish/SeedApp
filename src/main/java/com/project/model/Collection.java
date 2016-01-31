@@ -44,8 +44,12 @@ public class Collection extends BaseEntity {
 	@JsonIdentityReference(alwaysAsId = true)
 	private List<Asset> assets;
 	
+	@Column(nullable = false)
+	private boolean isPublic;
+	
 	public Collection() {
 		assets = new ArrayList<Asset>();
+		setPublic(true);
 	}
 
 	public Collection(String name, User owner, Group curators, Community communtiy) {
@@ -106,6 +110,14 @@ public class Collection extends BaseEntity {
 	
 	public void clearAssets() {
 		assets.clear();
+	}
+	
+	public boolean isPublic() {
+		return isPublic;
+	}
+
+	public void setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
 	}
 	
 }
