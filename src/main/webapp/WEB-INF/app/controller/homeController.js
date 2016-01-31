@@ -1,4 +1,4 @@
-ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams', '$scope', 'MessageService', 'CommunityService', function($controller, $mdToast, $routeParams, $scope, MessageService, CommunityService) {
+ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams', '$scope', 'AlertService', 'MessageService', 'CommunityService', function($controller, $mdToast, $routeParams, $scope, AlertService, MessageService, CommunityService) {
 
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 	

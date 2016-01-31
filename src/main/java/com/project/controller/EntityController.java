@@ -41,13 +41,13 @@ public class EntityController {
 			return cv;
 			
 		} catch (ClassNotFoundException e) {
-			throw new EntityControlledVocabularyException("Could not get controlled vocabulary for provided properties of entity " + entity + "!");
+			throw new EntityException("Could not get controlled vocabulary for provided properties of entity " + entity + "!");
 		}
 	}
 	
-	public class EntityControlledVocabularyException extends RuntimeException {
+	public class EntityException extends RuntimeException {
 		private static final long serialVersionUID = 1L;
-		public EntityControlledVocabularyException(String message) {
+		public EntityException(String message) {
 			super(message);
 		}
 	}

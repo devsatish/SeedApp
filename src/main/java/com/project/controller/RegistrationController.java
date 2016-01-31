@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.model.Group;
 import com.project.model.DecodedToken;
+import com.project.model.Group;
 import com.project.model.User;
 import com.project.model.repo.GroupRepo;
 import com.project.model.repo.UserRepo;
@@ -76,14 +76,19 @@ public class RegistrationController {
 		
 		user.setProfile(profile);
 		
-		user = userRepo.save(user);
+		try {
+			user = userRepo.save(user);
+		}
+		catch(DataIntegrityViolationException e) {
+			throw new RegistrationException("A registration has already begun with email " + email);
+		}
 		
 		String token;
 		
 		try {
 			token = cryptoService.generateToken(user.getUsername(), TOKEN_TYPE);
 		} catch (InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | IllegalBlockSizeException | BadPaddingException e1) {
-			throw new InternalAuthenticationServiceException("Could not generate token!");
+			throw new RegistrationException("Could not generate token!");
 		}
 		
 		URL requestUrl;
@@ -91,7 +96,7 @@ public class RegistrationController {
 		try {
 			requestUrl = new URL(request.getRequestURL().toString());
 		} catch (MalformedURLException e1) {
-			throw new InternalAuthenticationServiceException("Could not craft link!");
+			throw new RegistrationException("Could not craft link!");
 		}
 		
 		String link = requestUrl.getProtocol() + "://" + requestUrl.getHost() + ":" + requestUrl.getPort() + request.getServletContext().getContextPath() + "/registration/" + token;
@@ -99,7 +104,7 @@ public class RegistrationController {
 		try {
 			emailService.sendEmail(email, "Ascension Registration", "Please follow link to complete registration:\n\n" + link);
 		} catch (MessagingException e) {
-			throw new InternalAuthenticationServiceException("Could not send email to " + email + "!");
+			throw new RegistrationException("Could not send email to " + email + "!");
 		}
 		
 		return "SUCCESS";
@@ -113,7 +118,7 @@ public class RegistrationController {
 		try {
 			token = cryptoService.validateToken(encodedToken, TOKEN_TYPE);			
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
-			throw new InternalAuthenticationServiceException("Bad token!");
+			throw new RegistrationException("Bad token!");
 		}
 		
 		String username = token.getContent();
@@ -121,7 +126,7 @@ public class RegistrationController {
 		User user;
 		
 		if((user = userRepo.findByUsername(username)) == null) {
-			throw new InternalAuthenticationServiceException("Username " + username + " not found!");
+			throw new RegistrationException("Username " + username + " not found!");
 		}
 		
 		user.setActive(true);
@@ -134,6 +139,13 @@ public class RegistrationController {
 		groupRepo.save(everyone);
 				
 		return new ResponseEntity<String>(indexService.getIndex(), new HttpHeaders(), HttpStatus.ACCEPTED);
+	}
+	
+	public class RegistrationException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+		public RegistrationException(String message) {
+			super(message);
+		}
 	}
 		
 }

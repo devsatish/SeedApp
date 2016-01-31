@@ -1,7 +1,27 @@
 var config = {
 	'sockJsTransports': ['websocket', 'xhr-streaming', 'xhr-polling', 'jsonp-polling'],
 	'privateModels': ['user'],
-	'stompDebug': false
+	'stompDebug': false,
+	'alerts': {
+		'types': [
+			'SUCCESS',
+			'WARNING',
+			'ERROR',
+			'INFO',
+			'UNKNOWN'
+		],
+		'classes': {
+			'SUCCESS': 'success',
+			'WARNING': 'warning',
+			'ERROR':   'error',
+			'UNKNOWN': 'error',
+			'INFO': 'info',
+			'DEFAULT': 'info'
+		},
+		'duration': 15000,
+		'flush': 900000,
+		'email': 'wwelling@outlook.com'
+	}
 }
 
 ascension.config(['$locationProvider', '$mdThemingProvider', '$routeProvider', function($locationProvider, $mdThemingProvider, $routeProvider) {

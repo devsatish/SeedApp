@@ -54,89 +54,108 @@ footer {
   opacity: .80;
 }
 
-/* line 64, sass/main.scss */
-.md-toast.info {
+/* alert styles */
+/* line 66, sass/main.scss */
+.alert {
+  border-style: solid;
+  border-width: thin;
+  position: relative;
+  z-index: 100;
+  padding: 5px;
+}
+
+/* basic styling */
+/* line 76, sass/main.scss */
+.info {
   color: #31708f;
   background-color: #d9edf7;
   border-color: #bce8f1;
 }
 
-/* line 70, sass/main.scss */
-.md-toast.success {
+/* line 82, sass/main.scss */
+.success {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
 
-/* line 76, sass/main.scss */
-.md-toast.warning {
+/* line 88, sass/main.scss */
+.warning {
   color: #8a6d3b;
   background-color: #fcf8e3;
   border-color: #faebcc;
 }
 
-/* line 82, sass/main.scss */
-.md-toast.error {
+/* line 94, sass/main.scss */
+.error {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
 
 /* breadcrumbs */
-/* line 90, sass/main.scss */
-md-content.breadcrumbs {
+/* line 102, sass/main.scss */
+md-content.breadcrumb-wrapper {
+  background-color: #d3d3d3;
+  overflow: hidden;
+}
+
+/* line 107, sass/main.scss */
+.breadcrumbs {
   top: 5px;
+  left: 15px;
+  margin-bottom: 10px;
   position: relative;
 }
 
-/* line 95, sass/main.scss */
+/* line 114, sass/main.scss */
 span.padding {
   padding-left: 5px;
   padding-right: 5px;
 }
 
 /* tree */
-/* line 102, sass/main.scss */
+/* line 121, sass/main.scss */
 div.transclude {
   margin-bottom: 5px;
 }
 
-/* line 106, sass/main.scss */
+/* line 125, sass/main.scss */
 span.transcluded {
   position: relative;
   left: 5px;
   top: 2px;
 }
 
-/* line 112, sass/main.scss */
+/* line 131, sass/main.scss */
 span.space.community {
   margin-left: 23px;
 }
 
-/* line 116, sass/main.scss */
+/* line 135, sass/main.scss */
 span.space.collection {
   margin-left: 14px;
 }
 
-/* line 120, sass/main.scss */
+/* line 139, sass/main.scss */
 a.community {
   text-decoration: none;
   font-size: 20px;
 }
 
-/* line 125, sass/main.scss */
+/* line 144, sass/main.scss */
 a.collection {
   text-decoration: none;
   font-size: 18px;
 }
 
 /* */
-/* line 132, sass/main.scss */
+/* line 151, sass/main.scss */
 ng-md-icon.clickable {
   margin-bottom: 3px;
 }
 
-/* line 136, sass/main.scss */
+/* line 155, sass/main.scss */
 ng-md-icon.clickable:hover {
   cursor: pointer;
 }

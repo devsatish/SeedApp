@@ -2,9 +2,11 @@ ascension.directive('ascBreadcrumbs', [ 'BreadcrumbService', function(Breadcrumb
  	return {
  		restrict: 'E',
     	scope: {},
-    	template: 	'<md-content class="breadcrumbs">' +
-			    		'<span><a href="home">Home</a><span>' +
-			    		'<span ng-repeat="breadcrumb in breadcrumbs"> / <a href="{{breadcrumb.view}}">{{breadcrumb.display}}</a><span>' +
+    	template: 	'<md-content class="breadcrumb-wrapper">' +
+    					'<div class="breadcrumbs">' +
+			    			'<span><a href="home">Home</a><span>' +
+			    			'<span ng-repeat="breadcrumb in breadcrumbs"> / <a href="{{breadcrumb.view}}">{{breadcrumb.display}}</a><span>' +
+			    		'</div>' +
 					'</md-content>',
 		link: function($scope, element, attr) {
 			BreadcrumbService.listen().then(null, null, function(data) {
