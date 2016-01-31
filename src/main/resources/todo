@@ -1,7 +1,12 @@
+- bring in alert directive and service
+
+- create 3-panel navigation only showing public communities and collections
+
+- create context aware directive
+
+- move tree directive to display users own tree giving option to make private/public
 
 - more validations, phone, boolean, etc.
-
-- home page: context-aware cards 
 
 - item page
 
