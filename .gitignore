@@ -48,6 +48,7 @@ Temporary Items
 target/
 
 # Sensitive files
+src/main/resources/application.properties
 
 # Log files
 ascension.log*
@@ -62,3 +63,4 @@ m2e-wtp/
 bin/
 .sass-cache/
 node_modules/
+src/main/webapp/WEB-INF/resources/bower_components
