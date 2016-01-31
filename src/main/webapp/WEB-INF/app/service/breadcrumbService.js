@@ -57,10 +57,6 @@ ascension.service('BreadcrumbService', [ '$q', 'CommunityService', function($q, 
 				view = view.replace(':' + i, next.params[i])
 			}
 			
-			console.log(view);
-			
-			var display = 'Unknown';
-			
 			if(view.substring(1, lengths.user) == 'user') {	
 				createBreadcrumb(view, 'User');
 			}
@@ -76,20 +72,7 @@ ascension.service('BreadcrumbService', [ '$q', 'CommunityService', function($q, 
 				breadcrumbs = collection.trail;
 			}
 			else {
-				if(false) {
-					breadcrumb = {
-						'view': view,
-						'display': display
-					}				
-					var index = indexOf(breadcrumb);
-					if(index == 0) {
-						depth++;
-						breadcrumbs.push(breadcrumb);
-					}
-					else {
-						breadcrumbs.splice(index, breadcrumbs.length - index);
-					}
-				}
+				createBreadcrumb('/403', 'Restricted');				
 			}
 						
 			defer.notify(breadcrumbs);
