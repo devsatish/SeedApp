@@ -24,8 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.exception.AbstractException;
 import com.project.model.DecodedToken;
 import com.project.model.Group;
 import com.project.model.User;
@@ -141,7 +143,8 @@ public class RegistrationController {
 		return new ResponseEntity<String>(indexService.getIndex(), new HttpHeaders(), HttpStatus.ACCEPTED);
 	}
 	
-	public class RegistrationException extends RuntimeException {
+	@ResponseBody
+	public class RegistrationException extends AbstractException {
 		private static final long serialVersionUID = 1L;
 		public RegistrationException(String message) {
 			super(message);

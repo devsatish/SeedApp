@@ -20,7 +20,7 @@ ascension.controller('AbstractController', ['$location', '$mdDialog', '$mdMedia'
 			focusOnOpen: true,
 			clickOutsideToClose: typeof clickAwayClose != 'undefined' ? clickAwayClose : true,
 			escapeToClose: typeof escapeClose != 'undefined' ? escapeClose : true,
-			fullscreen: $window.innerWidth <= 600 ? true : false,
+			fullscreen: $window.innerWidth < 500,
 			scope: $scope,
 			controller: function($scope) {
 				$scope.dialog = 'view/dialogs/' + dialog + '.html';
@@ -33,6 +33,7 @@ ascension.controller('AbstractController', ['$location', '$mdDialog', '$mdMedia'
 				$scope.hide = function() {
 					$mdDialog.hide();
 				};
+				
 			}
 		})
 		.then(function() {
