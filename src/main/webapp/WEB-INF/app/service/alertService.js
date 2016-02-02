@@ -228,25 +228,28 @@ ascension.service("AlertService", function($q, $interval, $timeout) {
 	 *  Adds to both the store for type and store for channel. 
 	 * 
 	 */
-	AlertService.add = function(meta, channel) {		
-		var endpoint = channel;		
+	AlertService.add = function(meta, channel) {
 		
-		// add alert to store by endpoint
-		add(endpoint, meta, channel);
-		
-		// return if endpoint is exclusive
-		if(exclusive.indexOf(endpoint) > -1) {
-			return;
-		}
-		
-		var controller = channel.substr(0, channel.lastIndexOf("/"));
-		
-		// add alert to store by controller
-		add(controller, meta, channel);
-		
-		// return if controller is exclusive
-		if(exclusive.indexOf(controller) > -1) {
-			return;
+		if(typeof channel != 'undefined') {
+			var endpoint = channel;
+			
+			// add alert to store by endpoint
+			add(endpoint, meta, channel);
+			
+			// return if endpoint is exclusive
+			if(exclusive.indexOf(endpoint) > -1) {
+				return;
+			}
+			
+			var controller = channel.substr(0, channel.lastIndexOf("/"));
+			
+			// add alert to store by controller
+			add(controller, meta, channel);
+			
+			// return if controller is exclusive
+			if(exclusive.indexOf(controller) > -1) {
+				return;
+			}
 		}
 		
 		// allow time for any exclusive channels to be created 
@@ -301,6 +304,8 @@ ascension.service("AlertService", function($q, $interval, $timeout) {
 	 * 
 	 */
 	AlertService.remove = function(alert) {
+		
+		console.log(alert);
 		alert.remove = true;
 							
 		// remove alert from store by type

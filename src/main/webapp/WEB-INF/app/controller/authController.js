@@ -1,4 +1,4 @@
-ascension.controller('AuthController', ['$controller', '$location', '$scope', 'AlertService', 'AuthService', 'HttpService', 'MessageService', 'ModelService', function($controller, $location, $scope, AlertService, AuthService, HttpService, MessageService, ModelService) {
+ascension.controller('AuthController', ['$controller', '$location', '$scope', 'MessageService', 'AuthService', 'HttpService', 'MessageService', 'ModelService', function($controller, $location, $scope, MessageService, AuthService, HttpService, MessageService, ModelService) {
 	
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 	

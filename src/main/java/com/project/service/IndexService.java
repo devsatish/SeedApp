@@ -26,9 +26,9 @@ public class IndexService {
 	public void templateIndex() {
 		String base = servletContext.getContextPath();		
 		try {
-			index = new String(Files.readAllBytes(Paths.get(servletContext.getRealPath("/WEB-INF/view/index.html"))));
+			index = new String(Files.readAllBytes(Paths.get(servletContext.getRealPath("/WEB-INF/view/index.asc"))));
 		} catch (IOException e) {
-			System.out.println("Unable to read and template index.html.");
+			System.out.println("Unable to read and template index.asc.");
 			e.printStackTrace();
 		}		
 		index = index.replace("${base}", base).replace("${version}", version);

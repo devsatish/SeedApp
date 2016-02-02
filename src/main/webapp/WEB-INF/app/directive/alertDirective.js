@@ -147,6 +147,21 @@ ascension.directive('alerts', function (AlertService, $controller, $rootScope, $
 			 * @returns {void} returns void
 			 * 
 			 * @description
+			 * 	This method uses the 'AlertService' to remove 'alert'.
+			 */
+			$scope.close = function(alert) {
+				console.log(alert);
+				AlertService.remove(alert);
+			};
+			
+			/**
+			 * @ngdoc method
+			 * @name core.directive:alerts#$scope.remove
+			 * @methodOf core.directive:alerts
+			 * @param {Alert} alert an alert object
+			 * @returns {void} returns void
+			 * 
+			 * @description
 			 * 	This method uses the $timeout service to invoke the 'AlertService' to remove 'alert' 'after the 'duration' provided.
 			 */
 			$scope.remove = function(alert) {

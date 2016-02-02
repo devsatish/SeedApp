@@ -1,4 +1,4 @@
-ascension.directive('ascForm', [ 'MessageService', 'ModelService', 'ShadowService', function(MessageService, ModelService, ShadowService) {
+ascension.directive('ascForm', [ 'AlertService', 'ModelService', 'ShadowService', function(AlertService, ModelService, ShadowService) {
 	return {
 		restrict: 'E',
 		replace: false,
@@ -42,7 +42,7 @@ ascension.directive('ascForm', [ 'MessageService', 'ModelService', 'ShadowServic
 			$scope.create = function() {
 				ModelService.create($scope.model, $scope.object, function(response) {					
 					$scope.clear();
-					MessageService.success($scope.model + ' was succefully created', 5000);					
+					AlertService.add({'type':'SUCCESS','message':$scope.model + ' was succefully created'});				
 				}, function(error) {
 					$scope.error = error;										
 				});
@@ -62,7 +62,7 @@ ascension.directive('ascForm', [ 'MessageService', 'ModelService', 'ShadowServic
 					var data = {};
 					data[$scope.property] = $scope.object[$scope.property];
 					ModelService.update($scope.model, data, function(response) {						
-						MessageService.success($scope.property + ' of ' + $scope.model + ' has been successfully updated', 5000);
+						AlertService.add({'type':'SUCCESS','message':$scope.property + ' of ' + $scope.model + ' has been successfully updated'});
 						$scope.change = false;
 					}, function(error) {
 						console.log(error);

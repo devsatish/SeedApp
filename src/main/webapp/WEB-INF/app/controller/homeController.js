@@ -1,4 +1,5 @@
-ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams', '$scope', 'AlertService', 'MessageService', 'CommunityService', function($controller, $mdToast, $routeParams, $scope, AlertService, MessageService, CommunityService) {
+ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams', '$scope', 'AlertService', 'CommunityService', 
+                                function($controller,   $mdToast,   $routeParams,   $scope,   AlertService,   CommunityService) {
 
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 	
@@ -14,8 +15,8 @@ ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams
 		case 'login': {
 			$scope.showDialog('login', '30');
 		} break;
-		case 'registration': {	
-			MessageService.success('Registration complete. Please login.', 5000);			
+		case 'registration': {
+			AlertService.add({ 'type': 'SUCCESS', 'message': 'Registration complete. Please login.' }, "");
 			$scope.showDialog('login', '30');			
 		} break;
 		default: {
