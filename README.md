@@ -1,5 +1,7 @@
 # Ascension
 
+Requirements: java 1.8, mvn, npm, bower, compass
+
 Work in progress
 
 Install postgres, create database, config in application.properties
