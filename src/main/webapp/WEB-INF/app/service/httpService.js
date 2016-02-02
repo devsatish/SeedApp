@@ -11,7 +11,7 @@ ascension.service('HttpService', [ '$http', function($http) {
 			}).success(function(data, status, headers, config) {
 				success(data);
 			}).error(function(data, status, headers, config) {
-				if(failure) failure(data.message);				
+				if(failure) failure(typeof data.message != 'undefined' ? data.message : data);				
 			});
 		}
 	}

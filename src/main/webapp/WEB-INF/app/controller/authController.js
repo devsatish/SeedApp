@@ -1,19 +1,17 @@
-ascension.controller('AuthController', ['$controller', '$location', '$scope', 'AuthService', 'HttpService', 'MessageService', 'ModelService', function($controller, $location, $scope, AuthService, HttpService, MessageService, ModelService) {
+ascension.controller('AuthController', ['$controller', '$location', '$scope', 'MessageService', 'AuthService', 'HttpService', 'MessageService', 'ModelService', function($controller, $location, $scope, MessageService, AuthService, HttpService, MessageService, ModelService) {
 	
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 	
-	$scope.registration = function(username, password, confirm, firstName, lastName, email) {		
+	$scope.registration = function(username, password, confirm, firstName, lastName, email) {
 		$scope.registering = true;
 		HttpService.request('POST', 'registration/begin', { 'Accept': 'application/text' }, {'username': username, 'password': password, 'confirm': confirm, 'firstName': firstName, 'lastName': lastName, 'email': email}, 'json', function(response) {			
 			$scope.hide();			
-			$scope.registering = false;			
+			$scope.registering = false;
 			if(response == 'SUCCESS') {
 				MessageService.success('An email has been sent to ' + email + '.\nPlease confirm email to complete registration.', 5000);
 			}
-			else {
-				MessageService.error('Registration failed: ' + response, 5000);				
-			}
 		}, function(error) {
+			$scope.registering = false;
 			$scope.error = error;
 		});		
 	};
@@ -51,7 +49,6 @@ ascension.controller('AuthController', ['$controller', '$location', '$scope', 'A
 			ModelService.reset('user');
 			$location.path("/home");
 		}, function(error) {
-			console.log(error)
 			$scope.error = error;
 		});	
 	};

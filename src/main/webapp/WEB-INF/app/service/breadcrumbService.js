@@ -19,7 +19,31 @@ ascension.service('BreadcrumbService', [ '$q', 'CommunityService', function($q, 
 		return 0;
 	}
 	
+	var createBreadcrumb = function(view, display) {
+		clearBreadcrumbs();
+		breadcrumb = {
+			'view': view,
+			'display': display
+		}				
+		var index = indexOf(breadcrumb);
+		if(index == 0) {
+			depth++;
+			breadcrumbs.push(breadcrumb);
+		}
+		else {
+			breadcrumbs.splice(index, breadcrumbs.length - index);
+		}
+	}
+	
+	var clearBreadcrumbs = function() {
+		depth = 0;
+		breadcrumbs = [];
+		defer.notify(breadcrumbs);
+	}
+	
 	var lengths = {
+		'user': '/user'.length, 
+		'admin': '/admin'.length,
 		'community': '/community'.length, 
 		'collection': '/collection'.length
 	}
@@ -33,9 +57,13 @@ ascension.service('BreadcrumbService', [ '$q', 'CommunityService', function($q, 
 				view = view.replace(':' + i, next.params[i])
 			}
 			
-			var display = 'Unknown';
-			
-			if(view.substring(1, lengths.community) == 'community') {	
+			if(view.substring(1, lengths.user) == 'user') {	
+				createBreadcrumb(view, 'User');
+			}
+			else if(view.substring(1, lengths.admin) == 'admin') {	
+				createBreadcrumb(view, 'Administration');
+			}
+			else if(view.substring(1, lengths.community) == 'community') {	
 				var community = CommunityService.findCommunityById(view.substring(lengths.community + 1));
 				breadcrumbs = community.trail;
 			}
@@ -44,20 +72,7 @@ ascension.service('BreadcrumbService', [ '$q', 'CommunityService', function($q, 
 				breadcrumbs = collection.trail;
 			}
 			else {
-				if(false) {
-					breadcrumb = {
-						'view': view,
-						'display': display
-					}				
-					var index = indexOf(breadcrumb);
-					if(index == 0) {
-						depth++;
-						breadcrumbs.push(breadcrumb);
-					}
-					else {
-						breadcrumbs.splice(index, breadcrumbs.length - index);
-					}
-				}
+				createBreadcrumb('/403', 'Restricted');				
 			}
 						
 			defer.notify(breadcrumbs);
@@ -73,9 +88,7 @@ ascension.service('BreadcrumbService', [ '$q', 'CommunityService', function($q, 
 			defer.notify(breadcrumbs);
 		},
 		clear: function() {
-			depth = 0;
-			breadcrumbs = [];
-			defer.notify(breadcrumbs);
+			clearBreadcrumbs();
 		},
 		get: function() {
 			return breadcrumbs;
