@@ -9,7 +9,7 @@ ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams
 	$scope.title = 'Home';
 	
 	$scope.context = 'home';
-		
+	
 	switch($routeParams.action) {
 		case 'login': {
 			$scope.showDialog('login', '30');
