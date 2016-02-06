@@ -1,0 +1,10 @@
+{
+    "settings": {
+    	"role": {
+    		"gloss": "Role",
+    		"type": "text",
+            "required": true,
+            "validations": {}
+    	}
+    }
+}

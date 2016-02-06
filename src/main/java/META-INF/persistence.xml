@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ascension">
+		<class>com.project.model.Asset</class>
+		<class>com.project.model.BaseEntity</class>
+		<class>com.project.model.Collection</class>
+		<class>com.project.model.Color</class>
+		<class>com.project.model.ControlledVocabulary</class>
+		<class>com.project.model.Embargo</class>
+		<class>com.project.model.EntityWhitelist</class>
+		<class>com.project.model.Event</class>
+		<class>com.project.model.Exhibit</class>
+		<class>com.project.model.FieldGloss</class>
+		<class>com.project.model.FieldPredicate</class>
+		<class>com.project.model.FieldValue</class>
+		<class>com.project.model.Font</class>
+		<class>com.project.model.Group</class>
+		<class>com.project.model.Language</class>
+		<class>com.project.model.Metadata</class>
+		<class>com.project.model.OrderedBaseEntity</class>
+		<class>com.project.model.Theme</class>
+		<class>com.project.model.Timeline</class>
+		<class>com.project.model.User</class>
+		<class>com.project.model.VocabularyWord</class>
+		<class>com.project.oauth.model.OAuthAccessToken</class>
+		<class>com.project.oauth.model.OAuthApprovals</class>
+		<class>com.project.oauth.model.OAuthClientDetails</class>
+		<class>com.project.oauth.model.OAuthClientToken</class>
+		<class>com.project.oauth.model.OAuthCode</class>
+		<class>com.project.oauth.model.OAuthRefreshToken</class>
+		<class>com.project.model.Community</class>
+	</persistence-unit>
+</persistence>

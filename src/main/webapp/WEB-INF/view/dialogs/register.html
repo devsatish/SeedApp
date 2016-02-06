@@ -1,0 +1,90 @@
+<md-toolbar>
+	<div class="md-toolbar-tools">
+       	<h2>Registration</h2>
+       	<span flex></span>
+       	<md-button class="md-icon-button" ng-click="cancel()" aria-label="Cancel">
+			<ng-md-icon icon="close"></ng-md-icon>
+       	</md-button>
+	</div>
+</md-toolbar>
+
+<md-content layout-padding>
+
+	<form name="register" novalidate ng-submit="registration(username, password, confirm, firstName, lastName, email)">
+
+ 		<md-input-container class="md-block">
+			<label>Username</label>
+			<input required ng-minlength="4" ng-maxlength="24" type="text" name="username" ng-model="username" md-autofocus>
+			<div ng-messages="register.username.$error">
+				<div ng-message="required">Username is required.</div>
+		    	<div ng-message="minlength">Username must be at least 4 characters.</div>
+		    	<div ng-message="maxlength">Username must be equal to or less than 24 characters.</div>
+			</div>
+		</md-input-container>
+
+   		<md-input-container class="md-block">
+       		<label>Password</label>
+       		<input required ng-minlength="6" ng-maxlength="32" type="password" name="password" ng-model="password">
+       		<div ng-messages="register.password.$error">
+       			<div ng-message="required">Password is required.</div>
+       			<div ng-message="minlength">Password must be at least 6 characters.</div>
+       			<div ng-message="maxlength">Password must be equal to or less than 32 characters.</div>
+       		</div>
+   		</md-input-container>	
+
+   		<md-input-container class="md-block">
+       		<label>Confirm Password</label>
+       		<input required ng-minlength="6" ng-maxlength="32" type="password" name="confirm" ng-model="confirm">
+       		<div ng-messages="register.confirm.$error">
+       			<div ng-message="required">Confirm Password is required.</div>
+       			<div ng-message="minlength">Confirm Password must be at least 6 characters.</div>
+       			<div ng-message="maxlength">Confirm password must be equal to or less than 32 characters.</div>
+       		</div>
+   		</md-input-container>
+   		
+   		<md-input-container class="md-block">
+			<label>First Name</label>
+			<input required ng-minlength="2" ng-maxlength="32" type="text" name="firstName" ng-model="firstName">
+			<div ng-messages="register.firstName.$error">
+				<div ng-message="required">First name is required.</div>
+		    	<div ng-message="minlength">First name must be at least 2 characters.</div>
+		    	<div ng-message="maxlength">First name must be equal to or less than 32 characters.</div>
+			</div>
+		</md-input-container>
+		
+		<md-input-container class="md-block">
+			<label>Last Name</label>
+			<input required ng-minlength="2" ng-maxlength="32" type="text" name="lastName" ng-model="lastName">
+			<div ng-messages="register.lastName.$error">
+				<div ng-message="required">Last name is required.</div>
+		    	<div ng-message="minlength">Last name must be at least 2 characters.</div>
+		    	<div ng-message="maxlength">Last name must be equal to or less than 32 characters.</div>
+			</div>
+		</md-input-container>
+
+   		<md-input-container class="md-block">
+       		<label>Email</label>
+       		<input required ng-maxlength="64" type="email" name="email" ng-model="email">
+       		<div ng-messages="register.email.$error">
+       			<div ng-message="required">Email is required.</div>
+       			<div ng-message="email">Email is not valid.</div>
+       			<div ng-message="maxlength">Email must be equal to or less than 64 characters.</div>
+       		</div>
+   		</md-input-container>
+   		
+   		<md-input-container class="md-block">
+   			<div style="color: red" ng-messages="error">{{error}}</div>
+   		</md-input-container>
+   		
+   		<md-input-container class="md-block">
+   			<md-progress-linear md-mode="indeterminate" ng-show="registering"></md-progress-linear>
+   		</md-input-container>
+
+		<md-input-container class="md-block">
+			<md-button type="submit" data-ng-disabled="register.$invalid || registering" class="md-raised md-primary" aria-label="Register">Register</md-button>
+			<md-button data-ng-disabled="registering" class="md-raised md-warn" ng-click="cancel()" aria-label="Cencel">Cancel</md-button>
+		</md-input-container>
+
+	</form>
+
+</md-content>

@@ -1,0 +1,6 @@
+<div class="alert {{alert.class}}" ng-class="{fade: alert.fade}" role="alert">
+	<md-button aria-label="Close alert" ng-click="close(alert)">
+		<ng-md-icon icon="close"></ng-md-icon>
+	</md-button>	
+	<strong>{{alert.type}}:</strong> {{alert.message}}
+</div>

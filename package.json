@@ -1,0 +1,35 @@
+{
+  "name": "Ascension",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Web Application",
+  "devDependencies": {
+    "bower": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-compass": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-usemin": "*",
+    "http-server": "*",
+    "jasmine-core": "*",
+    "jshint-stylish": "*",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-firefox-launcher": "*",
+    "karma-jasmine": "*",
+    "karma-junit-reporter": "*",
+    "load-grunt-tasks": "*",
+    "protractor": "*",
+    "shelljs": "*",
+    "time-grunt": "*",
+    "tmp": "*"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install"
+  }
+}
+

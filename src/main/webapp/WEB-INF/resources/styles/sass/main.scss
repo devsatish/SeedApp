@@ -1,0 +1,157 @@
+/* */ 
+
+html {
+
+}
+
+/* fades in when angular is ready */
+
+body {
+  display: none;
+}
+
+/* center footer content */
+
+footer {
+  text-align: center;
+}
+
+/* desktop */
+
+@media only screen and (min-width: 600px) {
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+  
+  .view {
+  	width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+/* mobile */
+
+@media only screen and (max-width: 600px) {
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+  
+  .view {
+  	width: 100%;
+  }
+  
+}
+
+/* toast styles */
+
+.md-toast {
+  position: fixed;
+  opacity: .80;
+}
+
+/* alert styles */
+
+.alert {
+  border-style: solid;
+  border-width: thin;
+  position: relative;    
+  z-index: 100;
+  padding: 5px;
+}
+
+/* basic styling */
+
+.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+/* breadcrumbs */
+
+md-content.breadcrumb-wrapper {
+  background-color: #d3d3d3;
+  overflow: hidden;
+}
+
+.breadcrumbs {
+  top: 5px;
+  left: 15px;
+  margin-bottom: 10px;
+  position: relative;  
+}
+
+span.padding {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* tree */
+
+div.transclude {
+  margin-bottom: 5px;
+}
+
+span.transcluded {
+  position: relative;
+  left: 5px;
+  top: 2px;
+}
+
+span.space.community {
+  margin-left: 23px;
+}
+
+span.space.collection {
+  margin-left: 14px;
+}
+
+a.community {
+  text-decoration: none;  
+  font-size: 20px;
+}
+
+a.collection {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* */
+
+ng-md-icon.clickable {
+  margin-bottom: 3px;
+}
+
+ng-md-icon.clickable:hover {
+  cursor: pointer;
+}

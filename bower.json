@@ -1,0 +1,24 @@
+{
+  "name": "Ascension",
+  "description": "Web Application",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angular": "*",
+    "angular-loader": "*",
+    "angular-route": "*",
+    "angular-mocks": "*",
+    "angular-material": "*",
+    "angular-messages": "*",
+    "angular-material-icons": "*",
+    "modernizr": "*",
+    "html5-boilerplate": "*",
+    "jquery": "*",
+    "sockjs-client": "*",
+    "stomp-websocket": "*"
+  },
+  "resolutions": {
+    "lodash": "*",
+    "fserver": "*"
+  }
+}

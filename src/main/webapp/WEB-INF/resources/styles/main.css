@@ -1,0 +1,161 @@
+/* */
+/* fades in when angular is ready */
+/* line 9, sass/main.scss */
+body {
+  display: none;
+}
+
+/* center footer content */
+/* line 15, sass/main.scss */
+footer {
+  text-align: center;
+}
+
+/* desktop */
+@media only screen and (min-width: 600px) {
+  /* line 23, sass/main.scss */
+  .desktop {
+    display: block;
+  }
+
+  /* line 27, sass/main.scss */
+  .mobile {
+    display: none;
+  }
+
+  /* line 31, sass/main.scss */
+  .view {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 600px) {
+  /* line 43, sass/main.scss */
+  .desktop {
+    display: none;
+  }
+
+  /* line 47, sass/main.scss */
+  .mobile {
+    display: block;
+  }
+
+  /* line 51, sass/main.scss */
+  .view {
+    width: 100%;
+  }
+}
+/* toast styles */
+/* line 59, sass/main.scss */
+.md-toast {
+  position: fixed;
+  opacity: .80;
+}
+
+/* alert styles */
+/* line 66, sass/main.scss */
+.alert {
+  border-style: solid;
+  border-width: thin;
+  position: relative;
+  z-index: 100;
+  padding: 5px;
+}
+
+/* basic styling */
+/* line 76, sass/main.scss */
+.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+/* line 82, sass/main.scss */
+.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+/* line 88, sass/main.scss */
+.warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+/* line 94, sass/main.scss */
+.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+/* breadcrumbs */
+/* line 102, sass/main.scss */
+md-content.breadcrumb-wrapper {
+  background-color: #d3d3d3;
+  overflow: hidden;
+}
+
+/* line 107, sass/main.scss */
+.breadcrumbs {
+  top: 5px;
+  left: 15px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* line 114, sass/main.scss */
+span.padding {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* tree */
+/* line 121, sass/main.scss */
+div.transclude {
+  margin-bottom: 5px;
+}
+
+/* line 125, sass/main.scss */
+span.transcluded {
+  position: relative;
+  left: 5px;
+  top: 2px;
+}
+
+/* line 131, sass/main.scss */
+span.space.community {
+  margin-left: 23px;
+}
+
+/* line 135, sass/main.scss */
+span.space.collection {
+  margin-left: 14px;
+}
+
+/* line 139, sass/main.scss */
+a.community {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* line 144, sass/main.scss */
+a.collection {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* */
+/* line 151, sass/main.scss */
+ng-md-icon.clickable {
+  margin-bottom: 3px;
+}
+
+/* line 155, sass/main.scss */
+ng-md-icon.clickable:hover {
+  cursor: pointer;
+}

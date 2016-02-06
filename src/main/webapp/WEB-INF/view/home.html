@@ -1,0 +1,38 @@
+
+<h3>Home <ng-md-icon ng-if="!isAnonymous()" md-menu-origin icon="add_circle_outline" class="clickable" ng-click="showDialog('controls', '50')"></ng-md-icon></h3>
+
+<md-content class="md-padding" layout="row" layout-xs="column">
+    
+	<md-card>
+       	<md-card-header>
+          	<md-card-avatar>
+            	<img class="md-user-avatar" src="resources/images/favicon.png"/>
+			</md-card-avatar>
+          	<md-card-header-text>
+            	<span class="md-title">Card</span>
+            	<span class="md-subhead">Subhead</span>
+          	</md-card-header-text>
+       	</md-card-header>        
+        <md-card-title>
+          	<md-card-title-text>
+	            <span class="md-headline">Title</span>
+            	<span class="md-subhead">Subhead</span>
+          	</md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="start center">
+          	<md-button>Action 1</md-button>
+          	<md-button>Action 2</md-button>
+          	<md-card-icon-actions>
+            	<md-button class="md-icon-button" aria-label="toggle">
+              		<md-icon md-svg-icon="md-toggle-arrow"></md-icon>
+            	</md-button>
+          	</md-card-icon-actions>
+        </md-card-actions>
+        <md-card-content>
+          	<p>Something here</p>
+        </md-card-content>
+	</md-card>		
+	
+	<asc-tree root="communities" context="context"></asc-tree>
+  	
+</md-content>	
