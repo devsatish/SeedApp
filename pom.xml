@@ -4,10 +4,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.project</groupId>
-	<artifactId>ascension</artifactId>
+	<artifactId>dictionary</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>Ascension</name>
+	<name>Dictionary</name>
 	<description>Web Application</description>
 
 	<packaging>war</packaging>

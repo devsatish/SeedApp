@@ -36,14 +36,7 @@ public class UserController {
 		User user = userRepo.findByUsername(username);
 		for (Map.Entry<String, Map<String, String>> propertyMap : data.entrySet()) {
 		    String property = propertyMap.getKey();
-		    switch(property) {
-		    	case "profile": {
-		    		user.setProfile(propertyMap.getValue());
-		    		user = userRepo.save(user);
-		    		Map<String, Map<String, String>> response = new HashMap<String, Map<String, String>>();
-		    		response.put(property, user.getProfile());
-		    		simpMessagingTemplate.convertAndSendToUser(username, "/queue/user", response);
-		    	} break;
+		    switch(property) {		    	
 		    	case "settings": {
 		    		user.setSettings(propertyMap.getValue());
 		    		user = userRepo.save(user);

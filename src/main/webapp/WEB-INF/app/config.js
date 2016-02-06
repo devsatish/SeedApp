@@ -46,14 +46,6 @@ ascension.config(['$locationProvider', '$mdThemingProvider', '$routeProvider', f
 			access: ['ROLE_USER', 'ROLE_ADMIN'],
 			reloadOnSearch: false
 		}).
-		when('/community/:communityId', {
-			templateUrl: 'view/community.html',
-			controller: 'CommunityController'
-		}).
-		when('/collection/:collectionId', {
-			templateUrl: 'view/collection.html',
-			controller: 'CollectionController'
-		}).
 		when('/home/:action', {
 			templateUrl: 'view/home.html',
 			controller: 'HomeController'
@@ -67,23 +59,12 @@ ascension.config(['$locationProvider', '$mdThemingProvider', '$routeProvider', f
 			templateUrl: 'view/home.html',
 			controller: 'HomeController'
 		});
-}]).run(['$location', '$rootScope', 'AuthService', 'BreadcrumbService', function($location, $rootScope, AuthService, BreadcrumbService) {
+}]).run(['$location', '$rootScope', 'AuthService', function($location, $rootScope, AuthService) {
 	
 	angular.element("body").fadeIn(1500);
 	 
 	$rootScope.$on("$routeChangeSuccess", function(event, next, current) {		
-		if(typeof next.$$route != 'undefined') {
-			if(BreadcrumbService.ready()) {
-				BreadcrumbService.process(next);
-			} else {
-				BreadcrumbService.init().then(function() {
-					BreadcrumbService.process(next);
-				});
-			}
-		}
-		else {
-			BreadcrumbService.clear();
-		}
+		
 	});
 	
 	$rootScope.$on("$routeChangeStart", function(event, next, current) {

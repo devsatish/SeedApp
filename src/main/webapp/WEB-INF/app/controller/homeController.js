@@ -1,11 +1,8 @@
-ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams', '$scope', 'AlertService', 'CommunityService', 
-                                function($controller,   $mdToast,   $routeParams,   $scope,   AlertService,   CommunityService) {
+ascension.controller('HomeController', ['$controller', '$mdToast', '$routeParams', '$scope', 'AlertService', function($controller,   $mdToast,   $routeParams,   $scope,   AlertService) {
 
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 	
 	angular.extend(this, $controller('AuthController', {$scope: $scope}));
-	
-	$scope.communities = CommunityService.get();
 		
 	$scope.title = 'Home';
 	

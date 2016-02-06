@@ -6,14 +6,9 @@ ascension.controller('UserController', ['$controller', '$location', '$scope', 'M
 							
 	var hashToSelected = function(hash) {
 		switch(hash) {
-			case 'profile': return 0;
-			case 'events': return 1;
-			case 'assets': return 2;
-			case 'exhibits': return 3;
-			case 'themes': return 4;
-			case 'settings': return 5;
+			case 'settings': return 0;
 			default: {
-				$location.hash('profile');
+				$location.hash('settings');
 				return 0;
 			}
 		}

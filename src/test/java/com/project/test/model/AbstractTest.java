@@ -7,7 +7,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.Application;
-import com.project.model.Theme;
 import com.project.model.User;
 import com.project.model.repo.UserRepo;
 import com.project.test.runner.OrderedRunner;
@@ -25,8 +24,6 @@ public abstract class AbstractTest {
 
 	protected static User testUser;
 	
-	protected static Theme testSettings;
-
 	@Autowired
 	protected UserRepo userRepo;
 		

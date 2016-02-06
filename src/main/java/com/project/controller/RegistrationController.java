@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.crypto.BadPaddingException;
@@ -29,9 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.exception.AbstractException;
 import com.project.model.DecodedToken;
-import com.project.model.Group;
 import com.project.model.User;
-import com.project.model.repo.GroupRepo;
 import com.project.model.repo.UserRepo;
 import com.project.service.CryptoService;
 import com.project.service.EmailService;
@@ -48,10 +45,7 @@ public class RegistrationController {
 
 	@Autowired
 	private UserRepo userRepo;
-	
-	@Autowired
-	private GroupRepo groupRepo;
-	
+		
 	@Autowired
 	private EmailService emailService;
 	
@@ -70,14 +64,7 @@ public class RegistrationController {
 		User user = new User(data.get("username"), passwordEncoder.encode(data.get("password")), "ROLE_USER", false);
 		
 		String email = data.get("email");
-		
-		Map<String, String> profile = new HashMap<String, String>();
-		profile.put("email", data.get("email"));
-		profile.put("firstName", data.get("firstName"));
-		profile.put("lastName", data.get("lastName"));
-		
-		user.setProfile(profile);
-		
+				
 		try {
 			user = userRepo.save(user);
 		}
@@ -135,11 +122,7 @@ public class RegistrationController {
 		user.setRole("ROLE_USER");
 				
 		user = userRepo.save(user);
-		
-		Group everyone = groupRepo.findByName("Everyone");
-		everyone.addUser(user);
-		groupRepo.save(everyone);
-				
+						
 		return new ResponseEntity<String>(indexService.getIndex(), new HttpHeaders(), HttpStatus.ACCEPTED);
 	}
 	
