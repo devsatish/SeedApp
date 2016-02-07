@@ -1,10 +1,11 @@
-ascension.directive('fullname', [ 'ModelService', function(ModelService) {
+ascension.directive('username', [ 'ModelService', function(ModelService) {
 	return {
 		restrict: 'E',
 		scope: {},
-		template: '<span>{{user.profile.firstName}} {{user.profile.lastName}}</span>',
+		template: '<span>{{user.username}}</span>',
 		controller: function($scope) {
 			$scope.user = ModelService.get('user');
+			console.log($scope.user);
 		},
 	};	
 } ]);

@@ -1,4 +1,4 @@
-ascension.controller('AuthController', ['$controller', '$location', '$scope', 'MessageService', 'AuthService', 'HttpService', 'MessageService', 'ModelService', function($controller, $location, $scope, MessageService, AuthService, HttpService, MessageService, ModelService) {
+ascension.controller('AuthController', ['$controller', '$location', '$scope', 'AlertService', 'AuthService', 'HttpService', 'MessageService', 'ModelService', function($controller, $location, $scope, AlertService, AuthService, HttpService, MessageService, ModelService) {
 	
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 	
@@ -8,7 +8,7 @@ ascension.controller('AuthController', ['$controller', '$location', '$scope', 'M
 			$scope.hide();			
 			$scope.registering = false;
 			if(response == 'SUCCESS') {
-				MessageService.success('An email has been sent to ' + email + '.\nPlease confirm email to complete registration.', 5000);
+				AlertService.add({ 'type': 'SUCCESS', 'message': 'An email has been sent to ' + email + '.\nPlease confirm email to complete registration.' }, "");				
 			}
 		}, function(error) {
 			$scope.registering = false;
@@ -21,7 +21,7 @@ ascension.controller('AuthController', ['$controller', '$location', '$scope', 'M
 			$scope.hide();			
 			AuthService.setRole(response.role);			
 			angular.extend(sessionStorage, response);			
-			ModelService.get('user');			
+			ModelService.get('user');
 			ModelService.after('user', function() {
 				ModelService.reconnect();
 				if($location.search().forward) {
