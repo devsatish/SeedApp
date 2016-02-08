@@ -1,4 +1,4 @@
-ascension.directive('username', [ 'ModelService', function(ModelService) {
+seedapp.directive('username', [ 'ModelService', function(ModelService) {
 	return {
 		restrict: 'E',
 		scope: {},

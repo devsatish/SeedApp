@@ -1,4 +1,4 @@
-ascension.service('AuthService', [ function() {
+seedapp.service('AuthService', [ function() {
 	
 	return {
 		setRole: function(role) {

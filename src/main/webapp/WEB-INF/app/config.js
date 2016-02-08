@@ -24,7 +24,7 @@ var config = {
 	}
 }
 
-ascension.config(['$locationProvider', '$mdThemingProvider', '$routeProvider', function($locationProvider, $mdThemingProvider, $routeProvider) {
+seedapp.config(['$locationProvider', '$mdThemingProvider', '$routeProvider', function($locationProvider, $mdThemingProvider, $routeProvider) {
 	
 	$locationProvider.html5Mode({
 		enabled: true,

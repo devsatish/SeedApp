@@ -1,4 +1,4 @@
-ascension.controller('UserController', ['$controller', '$location', '$scope', 'ModelService', function($controller, $location, $scope, ModelService) {
+seedapp.controller('UserController', ['$controller', '$location', '$scope', 'ModelService', function($controller, $location, $scope, ModelService) {
 	
 	angular.extend(this, $controller('AbstractController', {$scope: $scope}));
 		

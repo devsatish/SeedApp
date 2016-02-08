@@ -11,7 +11,7 @@
  * 	of the alert. Old alerts removed using an interval.
  *
  */
-ascension.service("AlertService", function($q, $interval, $timeout) {
+seedapp.service("AlertService", function($q, $interval, $timeout) {
 
 	var AlertService = this;
 	

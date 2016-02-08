@@ -1,4 +1,4 @@
-ascension.service("ShadowService", [ '$q', function($q) {
+seedapp.service("ShadowService", [ '$q', function($q) {
 	
 	var shadows = {};
 	

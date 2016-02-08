@@ -1,4 +1,4 @@
-ascension.service("FormDataService", [ '$q', 'ModelService', function($q, ModelService) {
+seedapp.service("FormDataService", [ '$q', 'ModelService', function($q, ModelService) {
 	
 	var data = ModelService.get('data');
 	

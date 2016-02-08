@@ -1,4 +1,4 @@
-var ascension = angular.module('ascension', 
+var seedapp = angular.module('ascension', 
 [
 	'ngRoute',
 	'ngMaterial',

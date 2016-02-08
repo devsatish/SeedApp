@@ -1,4 +1,4 @@
-ascension.directive('ascTree', [ 'TreeService', function(TreeService) {	
+seedapp.directive('ascTree', [ 'TreeService', function(TreeService) {	
  	return {
  		restrict: 'E',
  		transclude: true,

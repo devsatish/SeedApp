@@ -1,4 +1,4 @@
-ascension.directive('ascForm', [ 'AlertService', 'ModelService', 'ShadowService', function(AlertService, ModelService, ShadowService) {
+seedapp.directive('ascForm', [ 'AlertService', 'ModelService', 'ShadowService', function(AlertService, ModelService, ShadowService) {
 	return {
 		restrict: 'E',
 		replace: false,

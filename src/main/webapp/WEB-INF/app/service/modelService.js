@@ -1,4 +1,4 @@
-ascension.service('ModelService', [ '$q', 'HttpService', 'WebsocketService', function($q, HttpService, WebsocketService) {
+seedapp.service('ModelService', [ '$q', 'HttpService', 'WebsocketService', function($q, HttpService, WebsocketService) {
 		
 	var store = {};
 	

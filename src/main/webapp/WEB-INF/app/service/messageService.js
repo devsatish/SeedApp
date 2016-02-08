@@ -1,4 +1,4 @@
-ascension.service('MessageService', [ function() {
+seedapp.service('MessageService', [ function() {
 	
 	//TODO: instant message other users
 	

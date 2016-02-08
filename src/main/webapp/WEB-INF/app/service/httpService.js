@@ -1,4 +1,4 @@
-ascension.service('HttpService', [ '$http', function($http) {
+seedapp.service('HttpService', [ '$http', function($http) {
 	
 	return {
 		request: function(method, url, headers, data, dataType, success, failure) {			

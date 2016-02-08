@@ -1,4 +1,4 @@
-ascension.service('WebsocketService', [ '$q', function($q) {
+seedapp.service('WebsocketService', [ '$q', function($q) {
 	
 	var socket = {
 		client: null,

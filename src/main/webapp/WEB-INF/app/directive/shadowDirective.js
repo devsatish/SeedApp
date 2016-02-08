@@ -1,4 +1,4 @@
-ascension.directive('shadow', [ 'ModelService', 'ShadowService', function(ModelService, ShadowService) {
+seedapp.directive('shadow', [ 'ModelService', 'ShadowService', function(ModelService, ShadowService) {
  	return {
     	scope: {
     		ngModel: '=',

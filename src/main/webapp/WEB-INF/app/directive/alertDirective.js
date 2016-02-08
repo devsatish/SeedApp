@@ -16,7 +16,7 @@
 * The alerts element directive provides alert messages based on the alert types in your application. Extends {@link core.controller:AbstractController 'AbstractController'}
 * 
 */
-ascension.directive('alerts', function (AlertService, $controller, $rootScope, $timeout) {
+seedapp.directive('alerts', function (AlertService, $controller, $rootScope, $timeout) {
 	return {
 		template: '<span ng-if="hasAlerts()" ng-repeat="alert in alerts"><span ng-include src="view"></span>',
 		restrict: 'E',

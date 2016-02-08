@@ -1,4 +1,4 @@
-ascension.directive('ascFirst', [  function() {	
+seedapp.directive('ascFirst', [  function() {	
 	return {		
 		link: function($scope, element, attr) {
 			if(attr.ascFirst == 0) {

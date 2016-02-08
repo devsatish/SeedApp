@@ -1,4 +1,4 @@
-ascension.controller('AbstractController', ['$location', '$mdDialog', '$mdMedia', '$mdSidenav', '$scope', '$window', 'AuthService', 'FormDataService', function($location, $mdDialog, $mdMedia, $mdSidenav, $scope, $window, AuthService, FormDataService) {
+seedapp.controller('AbstractController', ['$location', '$mdDialog', '$mdMedia', '$mdSidenav', '$scope', '$window', 'AuthService', 'FormDataService', function($location, $mdDialog, $mdMedia, $mdSidenav, $scope, $window, AuthService, FormDataService) {
 	
 	$scope.isAnonymous = function() {
 		return AuthService.getRole() == 'ROLE_ANONYMOUS';

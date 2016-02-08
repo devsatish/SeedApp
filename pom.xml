@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>storm.skyline</groupId>
-	<artifactId>skyline</artifactId>
+	<groupId>com.project</groupId>
+	<artifactId>seedapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>Skyline</name>
-	<description>Skyline Web Application</description>
+	<name>SeedApp</name>
+	<description>Seed Application</description>
 
 	<packaging>war</packaging>
 
@@ -25,12 +25,12 @@
 
 	<repositories>
 		
-		<!-- Maybe not needed -->
+		<!-- 
 		<repository>
 			<id>central</id>
 			<url>http://central.maven.org/maven2/</url>
 		</repository>
-		
+		-->
 		<repository>
 			<id>spring-releases</id>
 			<name>Spring Releases</name>

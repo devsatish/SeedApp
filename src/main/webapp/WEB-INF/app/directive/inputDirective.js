@@ -1,4 +1,4 @@
-ascension.directive('ascInput', ['CommunityService', 'FormDataService', 'ModelService', function(CommunityService, FormDataService, ModelService) {
+seedapp.directive('ascInput', ['CommunityService', 'FormDataService', 'ModelService', function(CommunityService, FormDataService, ModelService) {
 	return {
 		restrict: 'E',
 		replace: false,
