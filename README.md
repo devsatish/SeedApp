@@ -1,4 +1,4 @@
-# Dictionary
+# SeedApp
 
 Requirements: java 1.8, mvn, npm, bower, compass
 
