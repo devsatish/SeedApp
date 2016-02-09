@@ -42,9 +42,9 @@ public class ApplicationEventListener implements ApplicationListener<ContextRefr
 		entityService.initializeWhitelist();
 		
 		
-		new User("admin", passwordEncoder.encode("abc123"), "ROLE_ADMIN", true);
+		userRepo.save(new User("admin", passwordEncoder.encode("abc123"), "ROLE_ADMIN", true));
 		
-		new User("user", passwordEncoder.encode("abc123"), "ROLE_USER", true);
+		userRepo.save(new User("user", passwordEncoder.encode("abc123"), "ROLE_USER", true));
 		
 	}
 
