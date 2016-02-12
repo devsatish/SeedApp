@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.DispatcherServlet;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.project", "com.project.oauth" })
+@ComponentScan(basePackages = { "com.project", "com.project.service", "com.project.oauth" })
 public class Application extends SpringBootServletInitializer {
 
     @Override

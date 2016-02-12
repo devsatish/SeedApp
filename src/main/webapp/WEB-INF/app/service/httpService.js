@@ -11,7 +11,9 @@ seedapp.service('HttpService', [ '$http', function($http) {
 			}).success(function(data, status, headers, config) {
 				success(data);
 			}).error(function(data, status, headers, config) {
-				if(failure) failure(typeof data.message != 'undefined' ? data.message : data);				
+				if(typeof data != 'undefined' && failure) {
+					failure(typeof data.message != 'undefined' ? data.message : data);				
+				}
 			});
 		}
 	}

@@ -27,10 +27,13 @@ seedapp.service('ModelService', [ '$q', 'HttpService', 'WebsocketService', funct
 		
 	var subscribe = function(model) {
 		var privateModel = config.privateModels.indexOf(model) > -1;
-		if(store[model].subscription || privateModel) {			
+		if(store[model].subscription || privateModel) {
 			var channel = privateModel ? '/private/queue/' + model : '/broadcast/' + model;
+			console.log(model);
+			console.log(channel);
 			WebsocketService.subscribe(channel, function(data) {
-				var obj = angular.fromJson(data.body);				
+				var obj = angular.fromJson(data.body);
+				console.log(data);
 				if(privateModel) {
 					angular.extend(store[model].object, obj);					
 					store[model].defer.notify(store[model].object);
@@ -44,6 +47,8 @@ seedapp.service('ModelService', [ '$q', 'HttpService', 'WebsocketService', funct
 		
 	return {
 		get: function(model, subscription, skipCache) {
+			
+			console.log(model);
 			
 			if(!store[model]) {
 				create(model, subscription);
@@ -65,9 +70,12 @@ seedapp.service('ModelService', [ '$q', 'HttpService', 'WebsocketService', funct
 				// notify
 				angular.extend(store[model].object, data);
 				clean(store[model].object);
+				
+				console.log(data);
 			});
 			
-			HttpService.request('GET', prefix + model + '/get', {}, {}, null, function(response) {						
+			HttpService.request('GET', prefix + model + '/get', {}, {}, null, function(response) {	
+				console.log(response);
 				store[model].defer.notify(response);
 			}, function(error) {
 				// handle model errors

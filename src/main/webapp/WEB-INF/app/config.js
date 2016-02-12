@@ -54,6 +54,10 @@ seedapp.config(['$locationProvider', '$mdThemingProvider', '$routeProvider', fun
 			templateUrl: 'view/home.html',
 			controller: 'HomeController'
 		}).
+		when('/skyline', {
+			templateUrl: 'view/skyline.html',
+			controller: 'SkylineController'
+		}).
 		otherwise({
 			redirectTo: '/home',
 			templateUrl: 'view/home.html',
