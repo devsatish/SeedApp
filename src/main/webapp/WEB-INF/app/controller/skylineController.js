@@ -5,8 +5,9 @@ seedapp.controller('SkylineController', ['$controller', '$scope', 'ModelService'
 	$scope.skyline = ModelService.get('skyline', function(data) {
 		console.log(data);
 		$scope.skyline.vectors.push(data);
+		console.log($scope.skyline);
 	}, true);
 	
-	console.log($scope.skyline);
+	
 	
 }]);
