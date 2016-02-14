@@ -1,5 +1,7 @@
 package com.project.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.Properties;
 
 import javax.jms.ConnectionFactory;
@@ -32,11 +34,15 @@ public class ActiveMqConfig {
 	
 	@Autowired
 	@Lazy
-	private SkylineService skylineService;
+	private SimpMessagingTemplate simpMessagingTemplate;
 	
 	@Autowired
 	@Lazy
-	private SimpMessagingTemplate simpMessagingTemplate;
+	private ObjectMapper objectMapper;
+	
+	@Autowired
+	@Lazy
+	private SkylineService skylineService;
 	
 	private static String destination = "storm.skyline.queue";
 
@@ -47,7 +53,7 @@ public class ActiveMqConfig {
 
 	@Bean
 	public MessageListenerAdapter receiver() {
-		return new MessageListenerAdapter(new StormQueueReceiver(skylineService, simpMessagingTemplate)) {
+		return new MessageListenerAdapter(new StormQueueReceiver(skylineService, objectMapper, simpMessagingTemplate)) {
 			{
 				setDefaultListenerMethod("receiveMessage");
 			}

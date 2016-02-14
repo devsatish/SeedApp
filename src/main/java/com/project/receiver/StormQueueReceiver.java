@@ -1,17 +1,25 @@
 package com.project.receiver;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
+import com.project.model.SkyTuple;
 import com.project.service.SkylineService;
 
 public class StormQueueReceiver {
 	
 	private SkylineService skylineService;
+		
+	private ObjectMapper objectMapper;
 	
 	private SimpMessagingTemplate simpMessagingTemplate;
 	
-	public StormQueueReceiver(SkylineService skylineService, SimpMessagingTemplate simpMessagingTemplate) {
+	public StormQueueReceiver(SkylineService skylineService, ObjectMapper objectMapper, SimpMessagingTemplate simpMessagingTemplate) {
 		this.skylineService = skylineService;
+		this.objectMapper = objectMapper;
 		this.simpMessagingTemplate = simpMessagingTemplate;
 	}
 	
@@ -24,17 +32,37 @@ public class StormQueueReceiver {
 	}
 	
     public void receiveMessage(String message) {
+    	    	
+    	SkyTuple skyTuple = null;
+    	try {
+    		skyTuple = objectMapper.readValue(message, SkyTuple.class);
+    	}
+    	catch(Exception e) {
+    		enter(2, "Exception mapping message to SkyTuple!!!");
+    	}
     	
-    	skylineService.addVectorAsString(message);
+    	enter(2, "SkyTuple \n" + skyTuple.toString() + "\n");   
     	
-    	enter(2, "Received <" + message + ">");        
-        if(simpMessagingTemplate != null) {
-        	simpMessagingTemplate.convertAndSend("/broadcast/skyline", message);
-        }
-        else {
-        	enter(2, "Cannot send websocket message!!!");
-        }
-
+    	if(skyTuple != null) {
+    	
+	    	if(skylineService != null) {
+	    		skylineService.processTuple(skyTuple);
+	    	}
+	    	else {
+	    		enter(2, "Cannot process tuple!!! Skyline service is null!!!");
+	    	}		
+	    	
+	        if(simpMessagingTemplate != null) {
+	        	simpMessagingTemplate.convertAndSend("/broadcast/skyline", skyTuple);
+	        }
+	        else {
+	        	enter(2, "Cannot send websocket message!!!");
+	        }
+        
+    	}
+    	else {
+    		enter(2, "SkyTuple node is null!!!");
+    	}
     }
     
 }
